@@ -40,11 +40,11 @@ void callback(Flexure f, Value old_val, Value new_val) {
 flex = new Flexure("/");
 flex["apple"]["orange"] = 1.0;
 
-flex["apple"]["orange"].observe(callback);
+flex["apple"]["orange"].Observe(callback);
 flex["apple"]["orange"] = 2.0;
 // Prints "Changed from '1.0' to '2.0'"
 
-flex["apple"]["orange"].unobserve(callback);
+flex["apple"]["orange"].Unobserve(callback);
 flex["apple"]["orange"] = 0.0;
 // No output
 ```
