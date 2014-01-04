@@ -20,6 +20,16 @@ flex["/apple/orange"] = 2.0;
 (new Flexure("apple"))["orange"] = 2.0;
 ```
 
+Remapping namespaces at runtime:
+```c++
+flex = new Flexure("apple");
+flex.remap("orange", "/pear");
+flex["orange"] = 2.0; // Sets /pear = 2.0
+flex["/orange"] = 2.0; // Sets /orange = 2.0
+flex["mango"] = 2.0; // Sets apple/mango = 2.0
+```
+
+
 ```c++
 void callback(Flexure f, Value old_val, Value new_val) {
   std::cout << "Changed from '" 
