@@ -8,9 +8,16 @@ This is only a prototype.  Do not use this in production code.
 
 Examples
 --------
+
+Different ways of setting a value into ``/apple/orange``:
 ```c++
 flex = new Flexure("/");
 flex["apple"]["orange"] = 2.0;
+flex["apple/orange"] = 2.0;
+flex["apple//orange"] = 2.0;
+flex["/apple/orange"] = 2.0;
+(new Flexure("/apple"))["orange"] = 2.0;
+(new Flexure("apple"))["orange"] = 2.0;
 ```
 
 ```c++
