@@ -12,5 +12,8 @@
 *.la
 *.a
 
+# Compiled Binaries
+bin/*
+
 # Temporary cache files
 *~
