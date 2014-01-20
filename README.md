@@ -79,8 +79,7 @@ f.Unlock();
 int apple = *f;
 std::cout << "Apple is '"
           << apple << "'" << std::endl;
-// Prints "Apple is '3.0'"
-
+// Prints "Apple is '3.0'" OR "Apple is '2.5'"
 ```
 
 Transacting a hierarchy for atomic updates:
