@@ -27,15 +27,15 @@ class Flexure
   template <typename T2> Flexure<T2> Get(const string& name); 
   
   // Meta-accessor methods
-  void Observe(void (*function)(const T& old_val, const T& new_val));
-  void Unobserve(void (*function)(const T& old_val, const T& new_val));
+  void Observe(void (*function)(const T& value));
+  void Unobserve(void (*function)(const T& value));
+ 
+  void Lock();
+  void Unlock();
   
  private:
   Flexure::Entry entry_;
 };
-}
-
-#endif FLEXURE_H
 
 template<typename T>
 class Flexure
@@ -46,10 +46,17 @@ public:
   virtual const Flexure& operator[] (unsigned int i) const = 0;
 
   // Register function observers (on changes)
-  virtual void Observe(void (*function)(const T& old_val, const T& new_val)) = 0;
-  virtual void Unobserve(void (*function)(const T& old_val, const T& new_val)) = 0;
+  void Observe(void (*function)(const T& value));
+  void Unobserve(void (*function)(const T& value));
+
+  // Lock hierarchy for copy-on-unlock
+  void Lock();
+  void Unlock();
 
   // Access stored data
   virtual Flexure& operator= (const T& other) = 0;
   virtual operator T() = 0;
 }
+
+}
+#endif FLEXURE_H

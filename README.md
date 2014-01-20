@@ -20,9 +20,9 @@ flex = new Flexure("/");
 *(new Flexure("apple"))["orange"] = 2.5;
 
 int orange = *flex["apple"]["orange"];
-std::cout << "Orange is: "
-          << orange << std::endl;
-// Prints "Orange is: 2.5"
+std::cout << "Orange is '"
+          << orange << "'" << std::endl;
+// Prints "Orange is '2.5'"
 ```
 
 Remapping namespaces at runtime:
@@ -36,9 +36,8 @@ flex.remap("orange", "/pear");
 
 Registering a callback when a node changes values:
 ```c++
-void callback(Flexure f, Value old_val, Value new_val) {
-  std::cout << "Changed from '" 
-            << old_val << "' to '" 
+void callback(Flexure f, value) {
+  std::cout << "Changed to '" 
             << new_val << "'" << std::endl;
 }
 
