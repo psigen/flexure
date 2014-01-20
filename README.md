@@ -48,3 +48,13 @@ flex["apple"]["orange"].Unobserve(callback);
 flex["apple"]["orange"] = 0.0;
 // No output
 ```
+
+Locking a hierarchy for atomic updates:
+```c++
+Flexure f = flex["apple"];
+f.Lock();
+f = 2.0;
+f["apple"] = false;
+f["pear"] = "Pear";
+f.Unlock();
+```
