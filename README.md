@@ -9,24 +9,29 @@ This is only a prototype.  Do not use this in production code.
 Examples
 --------
 
-Different ways of setting a value into ``/apple/orange``:
+Different ways of getting and setting values into ``/apple/orange``:
 ```c++
 flex = new Flexure("/");
-flex["apple"]["orange"] = 2.0;
-flex["apple/orange"] = 2.0;
-flex["apple//orange"] = 2.0;
-flex["/apple/orange"] = 2.0;
-(new Flexure("/apple"))["orange"] = 2.0;
-(new Flexure("apple"))["orange"] = 2.0;
+*flex["apple"]["orange"] = 2.0;
+*flex["apple/orange"] = 2.1;
+*flex["apple//orange"] = 2.2;
+*flex["/apple/orange"] = 2.3;
+*(new Flexure("/apple"))["orange"] = 2.4;
+*(new Flexure("apple"))["orange"] = 2.5;
+
+int orange = *flex["apple"]["orange"];
+std::cout << "Orange is: "
+          << orange << std::endl;
+// Prints "Orange is: 2.5"
 ```
 
 Remapping namespaces at runtime:
 ```c++
 flex = new Flexure("apple");
 flex.remap("orange", "/pear");
-flex["orange"] = 2.0; // Sets /pear = 2.0
-flex["/orange"] = 2.0; // Sets /orange = 2.0
-flex["mango"] = 2.0; // Sets apple/mango = 2.0
+*flex["orange"] = 2.0; // Sets /pear = 2.0
+*flex["/orange"] = 2.0; // Sets /orange = 2.0
+*flex["mango"] = 2.0; // Sets apple/mango = 2.0
 ```
 
 Registering a callback when a node changes values:
@@ -38,14 +43,14 @@ void callback(Flexure f, Value old_val, Value new_val) {
 }
 
 flex = new Flexure("/");
-flex["apple"]["orange"] = 1.0;
+*flex["apple"]["orange"] = 1.0;
 
 flex["apple"]["orange"].Observe(callback);
-flex["apple"]["orange"] = 2.0;
+*flex["apple"]["orange"] = 2.0;
 // Prints "Changed from '1.0' to '2.0'"
 
 flex["apple"]["orange"].Unobserve(callback);
-flex["apple"]["orange"] = 0.0;
+*flex["apple"]["orange"] = 0.0;
 // No output
 ```
 
