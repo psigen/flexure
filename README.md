@@ -46,19 +46,49 @@ flex = new Flexure("/");
 
 flex["apple"]["orange"].Observe(callback);
 *flex["apple"]["orange"] = 2.0;
-// Prints "Changed from '1.0' to '2.0'"
+// Prints "Changed to '2.0'"
 
 flex["apple"]["orange"].Unobserve(callback);
 *flex["apple"]["orange"] = 0.0;
 // No output
 ```
 
-Locking a hierarchy for atomic updates:
+Locking a hierarchy for read persistence:
 ```c++
 Flexure f = flex["apple"];
+Flexure f2 = flex["apple"];
+*f = 2.0;
+
 f.Lock();
-f = 2.0;
-f["apple"] = false;
-f["pear"] = "Pear";
+
+int apple = *f;
+std::cout << "Apple is '"
+          << apple << "'" << std::endl;
+// Prints "Apple is '2.0'"
+
+*f = 2.5;
+*f2 = 3.0;
+
+int apple = *f;
+std::cout << "Apple is '"
+          << apple << "'" << std::endl;
+// Prints "Apple is '2.5'"
+
 f.Unlock();
+
+int apple = *f;
+std::cout << "Apple is '"
+          << apple << "'" << std::endl;
+// Prints "Apple is '3.0'"
+
+```
+
+Transacting a hierarchy for atomic updates:
+```c++
+Flexure f = flex["apple"];
+f.BeginTransaction();
+*f = 2.0;
+*f["apple"] = false;
+*f["pear"] = "Pear";
+f.EndTransaction();
 ```
