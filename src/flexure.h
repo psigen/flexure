@@ -32,7 +32,10 @@ class Flexure
  
   void Lock();
   void Unlock();
-  
+
+  void BeginTransaction();
+  void EndTransaction();
+ 
  private:
   Flexure::Entry entry_;
 };
@@ -49,9 +52,13 @@ public:
   void Observe(void (*function)(const T& value));
   void Unobserve(void (*function)(const T& value));
 
-  // Lock hierarchy for copy-on-unlock
+  // Lock hierarchy for object persistence
   void Lock();
   void Unlock();
+
+  // Transaction on hierarchy for atomic changes
+  void BeginTransaction();
+  void EndTransaction();
 
   // Access stored data
   virtual Flexure& operator= (const T& other) = 0;
