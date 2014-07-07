@@ -91,3 +91,13 @@ f.BeginTransaction();
 *f["pear"] = "Pear";
 f.EndTransaction();
 ```
+
+Philosophy
+----------
+  * IPC metadata will be read in YAML and sent in JSON to maximize compatibility.
+  * Customizable serialization/deserialization templates can be added.
+  * It should be possible to change transports completely without changing the backing store.
+  * It should be possible to change front-end APIs entirely without changing the backing store.
+  * Only one special value in the YAML schema: <TYPE>
+  * Use native data formats or interfaces in any native language implementation.
+  * Don't require Boost, but be compatible with Boost.
