@@ -42,7 +42,14 @@ The primary mechanism for interacting with Flexure is a Node.  Nodes are native 
 
 Datastore
 ---------
-Each node in Flexure is connected to a single datastore via shared memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.  These transports are configured from the union of the settings of the individual Nodes attached to the datastore.
+Each node in Flexure is connected to a single datastore either through shared memory or in-process memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.  The transports that the datastore uses are configured from the union of the settings of the individual Nodes attached to the datastore.
+
+Transport
+---------
+A Transport is a mechanism for exchanging data betweeen Datastores.  Because datastores know a large amount about what data they contain and what they need to update, transports have relatively few responsibilities.  A Transport needs to be able to:
+
+  * Uniquely address another datastore
+  * 
 
 
 There are four steps to Flexure communication:
