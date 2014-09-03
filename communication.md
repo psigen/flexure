@@ -41,7 +41,7 @@ The primary mechanism for interacting with Flexure is a Node.  Nodes are native 
 
 Datastore
 ---------
-Each node in Flexure is connected to a datastore via shared memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.
+Each node in Flexure is connected to a single datastore via shared memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.
 
 
 There are four steps to Flexure communication:
