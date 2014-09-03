@@ -37,7 +37,7 @@ Node C1 <--                                             --> Node C2
 
 Node
 ----
-The primary mechanism for interacting with Flexure is a Node.  Nodes are native objects that provide access to data stored in Flexure.  One process can have many Nodes, and they will not interfere with each other.  This can be useful in cases where each Node has different settings.
+The primary mechanism for interacting with Flexure is a Node.  Nodes are native objects that provide access to data stored in Flexure.  One process can have many Nodes, and they will not interfere with each other.  This can be useful in cases where each Node has different settings.  Nodes provide access to values in the global hierarchy, and also track which pieces of data are being used in that hierarchy.
 
 Datastore
 ---------
