@@ -30,10 +30,11 @@ Note that this is *not* representative of how data is stored internally or trans
 Data Exchange
 -------------
 ```
-Node A1 <--                                             --> Node A2
-Node B1 <--> Datastore 1 <-> Transport <-> Datastore 2 <--> Node B2
-Node C1 <--                                             --> Node C2
+Node A1 <--                                             --> Node D2
+Node B1 <--> Datastore 1 <-> Transport <-> Datastore 2 <--> Node E2
+Node C1 <--                                             --> Node F2
 ```
+Data in the global hierarchy is exchanged between Nodes through the use of Datastore and Transports.  Each of these objects is more formally defined below.  When you write software, you will interact with Nodes and use them to configure Datastores and Transports.
 
 Node
 ----
@@ -41,7 +42,7 @@ The primary mechanism for interacting with Flexure is a Node.  Nodes are native 
 
 Datastore
 ---------
-Each node in Flexure is connected to a single datastore via shared memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.
+Each node in Flexure is connected to a single datastore via shared memory.  The datastore contains an aggregation of the latest data that has been accumulated from various transports.  It can be shared by more than one Flexure node, and usually will be in many cases.  These transports are configured from the union of the settings of the individual Nodes attached to the datastore.
 
 
 There are four steps to Flexure communication:
@@ -66,7 +67,7 @@ class DiscoveryProtocol
 
 Transport
 ---------
-When a transport is found, a flexure node can choose to connect to it.  Transports are assumed to have the following properties:
+When another transport is found, a flexure node can choose to connect to it.  Transports are assumed to have the following properties:
 
 
 Schema intersection
