@@ -27,14 +27,14 @@ Note that this is *not* representative of how data is stored internally or trans
   * TODO: Regex for valid namespace strings
   * TODO: Table of special characters/namespace string resolution
 
-Data Exchange
--------------
+Data Replication
+----------------
 ```
 Node A1 <--                                             --> Node D2
 Node B1 <--> Datastore 1 <-> Transport <-> Datastore 2 <--> Node E2
 Node C1 <--                                             --> Node F2
 ```
-Data in the global hierarchy is exchanged between Nodes through the use of Datastore and Transports.  Each of these objects is more formally defined below.  When you write software, you will interact with Nodes and use them to configure Datastores and Transports.
+Data in the global hierarchy is replicated between Nodes through the use of Datastores and Transports.  Each of these objects is more formally defined below.  When you write software, you will interact with Nodes and use them to configure Datastores and Transports.
 
 Node
 ----
@@ -51,6 +51,8 @@ A Transport is a mechanism for exchanging data betweeen Datastores.  Because dat
   * Uniquely address each datastore.
   * Send and receive byte array messages transactionally (but not necessarily reliably).
 
+Data Transmission
+-----------------
 There are four steps to Flexure communication:
  * Discovery
  * Transport connection
