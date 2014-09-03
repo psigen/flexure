@@ -24,8 +24,8 @@ The datum is a tuple of a two byte arrays, a string type and an arbitrarily code
 
 Note that this is *not* representative of how data is stored internally or transmitted, only how it is organized through the API.
 
-TODO: Regex for valid namespace strings
-TODO: Table of special characters/namespace string resolution
+  * TODO: Regex for valid namespace strings
+  * TODO: Table of special characters/namespace string resolution
 
 Data Exchange
 -------------
