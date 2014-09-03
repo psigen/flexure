@@ -49,7 +49,7 @@ Transport
 A Transport is a mechanism for exchanging data betweeen Datastores.  Because datastores know a large amount about what data they contain and what they need to update, transports have relatively few responsibilities.  A Transport needs to be able to:
 
   * Uniquely address each datastore.
-  * Send and receive byte array messages transactionally (but not necessarily reliably)
+  * Send and receive byte array messages transactionally (but not necessarily reliably).
 
 There are four steps to Flexure communication:
  * Discovery
