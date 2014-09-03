@@ -20,7 +20,7 @@ Data Organization
 ```
 Data in Flexure is organized into a global hierarchy/tree.  The root element, or '\', is the highest level of this hierarchy.  Below this are named subelements.  Each element can contain one or more child elements and a single datum.
 
-The datum is a tuple of a two byte arrays, a string type and an arbitrarily coded value.  This string type can have any value, but there are several 'standard' types that all Flexure implementations should support.
+The datum is a tuple of two byte arrays, a string type and an arbitrarily coded value.  This string type can have any value, but there are several 'standard' types that all Flexure implementations should support.
 
 Note that this is *not* representative of how data is stored internally or transmitted, only how it is organized through the API.
 
