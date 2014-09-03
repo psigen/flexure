@@ -73,16 +73,25 @@ class DiscoveryProtocol
 };
 ```
 
-Transport
----------
-When another transport is found, a flexure node can choose to connect to it.  Transports are assumed to have the following properties:
-
-
 Schema intersection
 -------------------
-Flexure represents data as a massive hierarchy.  So when a transport connection is made, the first thing to do is exchange the schema of each side to establish a common protocol for exchanging information.  Upon opening a transport connection, the opening node sends a JSON schema document to the other node containing its schema.  
+Flexure represents data as a massive hierarchy.  So when a transport connection is made, the first thing to do is exchange the schema of each side to establish a common protocol for exchanging information.  Upon opening a transport connection, the opening node sends a JSON schema document to the other node containing its schema.  This JSON document contains nested objects for each element in the hierarchy, as well as a special optional '$' entry which contains the string type of the datum for an element, if it has one.
 
 This schema is limited to some depth, in case something like a quad-tree is being represented.
 
+For example, the Schema for the hierarchy shown at the top of this page would be:
+```json
+{
+    "fruits": {
+        "$": "Number",
+        "apple": { "$": "String" },
+        "banana": { "$": "String" }
+    },
+    "vegetables": {
+        "squash": { "$": "Number" },
+        "carrot": { "$": "Boolean" }
+    }
+}
+```
 
 
